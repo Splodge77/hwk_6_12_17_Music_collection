@@ -23,11 +23,12 @@ attr_accessor(:title, :genre, :artist_id)
   end
 
   def self.all()
-
     albums = SqlRunner.run("SELECT * FROM albums")
-
     return albums.map {|album| Album.new(album)}
+  end
 
+  def Album.delete_all
+    SqlRunner.run("DELETE FROM albums")
   end
 
 end
